@@ -1,0 +1,12 @@
+<p><%= image_tag @place.image %></p>
+<p><%= @place.name %></p>
+<p><%= @place.desc %></p>	
+
+<h4>Dishes</h4>
+	
+<% @place.dishes.each do |dish| %>
+	<p><%= dish.name %></p>
+	<p><%= dish.price %></p>
+	<p><%= dish.desc%></p>
+<% end %>
+	
