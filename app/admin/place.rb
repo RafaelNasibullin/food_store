@@ -44,7 +44,6 @@ show do
 		row :name
 		row :desc
 	end
-	active_admin_comments
 end
 
 
