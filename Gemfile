@@ -12,6 +12,7 @@ gem 'simple_form'
 gem 'activeadmin', '~> 1.0.0.pre5'
 gem 'devise'
 gem "paperclip", "~> 5.0.0"
+gem 'cancancan'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server

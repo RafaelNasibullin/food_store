@@ -1,5 +1,12 @@
-<% @places.each do |place| %>
-<p><%= image_tag place.image %></p>	
-<p><%= place.name %></p>	
-<p><%= link_to place.desc, show_path(place)  %></p>	
-<% end %>
+<div class="container">
+	<div class="row">
+		<% @places.each do |place| %>
+		<div class="col-md-2">
+			<p><%= image_tag place.image %></p>	
+			<p><%= place.name %></p>	
+			<p><%= link_to place.desc, show_path(place)  %></p>	
+		</div>
+		<% end %>
+	</div>
+</div>
+
