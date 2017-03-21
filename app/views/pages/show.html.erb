@@ -1,30 +1,37 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-7">
 			<p><%= image_tag @place.image %></p>
-			<p>Название: <%= @place.name %></p>
-			<p>Описание: <%= @place.desc %></p>	
+			<h3>Название: <%= @place.name %></h3>
+			<h4>Описание: <%= @place.desc %></h4>	
 			<p><%= link_to 'Назад', root_path  %></p>	
 
 		</div>
-		<div class="col-md-6">
+		<% if signed_in? %>
+		<div class="col-md-3 basket">
 			<h4>Корзина <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></h4>
 			<% current_user.carts.where(place: @place).first_or_create.cart_items.each do |item| %> 
-				<p>Описание: <%= item.dish.name %></p> 
-				<p>Цена: <%= item.price %></p>
+			<div class="element">
+				<p><%= item.dish.name %> | Цена: <%= item.price %> | <%= link_to 'X', destroy_path(item), method: :delete %></p> 
+				<p>количество: <%= item.amount %></p>					
+			</div>
 			<% end %>
+			<p>Сумма: <%= current_user.carts.where(place: @place).first.summ %> | </p>
 		</div>
+	<% end %>
 	</div>
 
 	<div class="row">
 		<% @place.dishes.each do |dish| %>
-		<div class="col-sm-6 col-md-2">
+		<div class="col-sm-6 col-md-3">
 			<div class="thumbnail">
 				<div class="caption">
 					<h3><%= dish.name %></h3>
 					<p>Описание: <%= dish.desc%></p>
 					<p>Цена: <%= dish.price %></p>
-					<p><a href="#" class="btn btn-primary" role="button">Добавить в корзину</a></p>
+					<% if signed_in? %>
+					<p><%= link_to 'Добавить в корзину', dish_cart_items_path(dish), class: 'btn btn-primary', method: :post %></p>
+					<% end %>
 				</div>
 			</div>
 		</div>

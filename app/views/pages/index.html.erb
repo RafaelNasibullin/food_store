@@ -3,8 +3,8 @@
 		<% @places.each do |place| %>
 		<div class="col-md-2">
 			<p><%= image_tag place.image %></p>	
-			<p><%= place.name %></p>	
-			<p><%= link_to place.desc, show_path(place)  %></p>	
+			<h3><%= place.name %></h3>	
+			<h4><%= link_to place.desc, show_path(place)  %></h4>	
 		</div>
 		<% end %>
 	</div>
